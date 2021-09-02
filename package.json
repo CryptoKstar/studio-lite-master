@@ -78,7 +78,6 @@
     "ngx-contextmenu": "^1.0.3",
     "platform": "^1.3.3",
     "primeng": "^4.0.0-rc.2",
-    "print-js": "^1.0.34",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "reselect": "^2.5.4",
