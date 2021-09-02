@@ -1,0 +1,27 @@
+<small class="debug">{{me}}</small>
+<hr/>
+<Logo class="pull-left" *ngIf="isBrandingDisabled" style="padding-left: 5px; padding-top: 5px"></Logo>
+<reseller-logo class="pull-left" *ngIf="!isBrandingDisabled" style="padding-left: 5px; padding-top: 5px"></reseller-logo>
+<span style="font-size: 16px; padding-top: 7px; padding-left: 4px" class="pull-left">{{resellerName}}</span>
+<div class="clearfix"></div>
+<hr/>
+<h4>{{clock$ | async | date:'medium'}}</h4>
+<hr/>
+<h3 style="color: green"><i class="fa fa-check-circle"></i> mode: online</h3>
+<div *ngIf="isBrandingDisabled">
+    <hr/>
+    <h5>Quick help:</h5>
+    <ul class="user-controls">
+        <li><a target="_blank" href="http://www.digitalsignage.com"><span style="margin-left:3px;" class="fa fa-link"></span> DigitalSignage.com</a></li>
+        <li><a target="_blank" href="http://www.digitalsignage.com/_html/signage_video.html"><span style="margin-left:3px;" class="fa fa-link"></span> Videos</a></li>
+        <li><a target="_blank" href="http://www.digitalsignage.com/_html/webinar_registration.html"><span style="margin-left:3px;" class="fa fa-link"></span> Webinar</a></li>
+        <li><a target="_blank" href="http://script.digitalsignage.com/forum/index.php"><span style="margin-left:3px;" class="fa fa-link"></span> Forum</a></li>
+    </ul>
+</div>
+<hr/>
+<h5>User: {{(m_userModel$ | async).getUser()}}</h5>
+<h5>Business id: {{(m_userModel$ | async).businessId()}}</h5>
+<h5>server : {{(m_userModel$ | async).getPartialDomain()}}</h5>
+<h5>app version: {{version}}</h5>
+<h5>framework version: {{ngVersion}}</h5>
+<hr/>

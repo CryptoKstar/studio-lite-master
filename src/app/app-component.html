@@ -1,0 +1,120 @@
+<div id="domRoot" [ngClass]="{hidden: m_hidden}">
+    <div id="headerPad"></div>
+    <nav id="fileMenu" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="pull-left" id="angularText" style="color: ghostwhite; padding-top: 5px; padding-left: 10px">
+
+                <Logo          class="pull-left" *ngIf="isBrandingDisabled" style="padding-left: 5px; padding-top: 5px"></Logo>
+                <reseller-logo class="pull-left" *ngIf="!isBrandingDisabled" style="padding-left: 5px; padding-top: 5px"></reseller-logo>
+
+                <span class="pull-left" style="padding-top: 4px; padding-left: 4px">
+                    <span style="font-size: 1.4em">{{productName}}</span>
+                    <!--<label [ngClass]="{offline: offlineDevMode}" style="padding-left: 20px; font-size: 10px; color: gray; font-family: Arial">version {{version}} | angular build {{ngVersion}} | {{offlineDevMode==true ? 'offline' : 'online'}}</label>-->
+                </span>
+                <div class="clearfix"></div>
+
+            </span>
+
+        </div>
+        <div id="appNavigatorComp" class="noCollapsing collapse navbar-collapse" id="bs-example-navbar-collapse-1">>
+            <ng-menu [routePrefix]="'App1'" [fileMenuMode]="false">
+                <ng-menu-item [fontawesome]="'fa-dashboard'" i18n-title name="Dashboard" title="Dashboard"></ng-menu-item>
+                <ng-menu-item [fontawesome]="'fa-navicon'" i18n-title name="Campaigns" title="Campaigns"></ng-menu-item>
+                <ng-menu-item [fontawesome]="'fa-certificate'" i18n-title name="Resources" title="Resources"></ng-menu-item>
+                <ng-menu-item [fontawesome]="'fa-edit'" i18n-title name="Scenes" title="Scenes"></ng-menu-item>
+                <ng-menu-item [fontawesome]="'fa-laptop'" i18n-title name="Stations" title="Stations"></ng-menu-item>
+                <ng-menu-item [fontawesome]="'fa-group'" i18n-title name="Fasterq" title="Fasterq"></ng-menu-item>
+                <ng-menu-item [fontawesome]="'fa-heart'" i18n-title name="Help" title="Help"></ng-menu-item>
+                <ng-menu-item *ngIf="isBrandingDisabled" [fontawesome]="'fa-laptop'" i18n-title name="Install" title="Install"></ng-menu-item>
+                <!--<ng-menu-item [fontawesome]="'fa-cog'" name="Settings" title="'Settings'"></ng-menu-item>-->
+                <ng-menu-item [fontawesome]="'fa-cloud-upload'" i18n-title name="Studiopro" title="Studiopro"></ng-menu-item>
+                <ng-menu-item [fontawesome]="'fa-power-off'" i18n-title name="Logout" title="Logout"></ng-menu-item>
+            </ng-menu>
+
+            <ul style="height: 20px" class="nav navbar-nav navbar-right noCollapsing">
+                <li>
+                    <a i18n-title title="upgrade" style="padding-bottom: 0px; margin-bottom: 0px" (click)="_onMenuIcon('upgrade',$event)" *ngIf="isBrandingDisabled" class="showUpgradeModal reshid" href="#"><i style="color: red" class="faHeader fa fa-cloud-upload"></i></a>
+                </li>
+                <li>
+                    <a i18n-title title="Cont-S" style="padding-bottom: 0px; margin-bottom: 0px" (click)="_onMenuIcon('save',$event)" href="#"><i style="color: greenyellow" class="faHeader fa fa-save"></i></a>
+                </li>
+                <li>
+                    <a i18n-title title="language" style="padding-bottom: 0px; margin-bottom: 0px" (click)="_onMenuIcon('locale',$event)" href="#"><i class="faHeader fa fa-question-circle"></i></a>
+                </li>
+                <li>
+                    <a i18n-title title="live chat" (click)="_onMenuIcon('chat',$event)" *ngIf="isBrandingDisabled" class="reshid" id="liveChat" href="#"><i class="faHeader fa fa-comments-o"></i></a>
+                </li>
+                <li style="padding-right: 20px">
+                    <a i18n-title title="web site" style="padding-bottom: 0px; margin-bottom: 0px" (click)="_onMenuIcon('web',$event)" *ngIf="isBrandingDisabled"  href="#"><i class="faHeader fa fa-globe"></i></a>
+                </li>
+                <!--<li style="padding-right: 20px">-->
+                <!--<a (click)="_onMenuIcon('dash',$event)" id="dashboard" href="#"><i class="faHeader fa fa-dashboard"></i></a>-->
+                <!--</li>-->
+            </ul>
+
+        </div>
+    </nav>
+    <div id="appEntry">
+        <router-outlet></router-outlet>
+
+        <div id="waitScreenEntryApp" style="display: none">
+            <span style="position: absolute; left: 45%; top: 20%"> <img src="./assets/preload5.gif"> </span>
+        </div>
+        <div id="appLogout" style="display: none"> <span style="position: absolute; left: 40%; top: 20%">
+      <h3 data-localize="haveNiceDay">Have a nice day :)</h3>
+      </span>
+        </div>
+        <div id="appSelector" class="noScroll container" style="display: none">
+            <div align="center" style="padding-top: 100px">
+                <button type="button" name="mailWasp" class="btn btn-default">
+                    <i style="margin: 20px; padding: 20px; font-size: 5em" class="fa fa-envelope"></i>
+                    <span data-localize="none"></span>
+                </button>
+                <button type="button" name="everNodes" class="btn btn-default">
+                    <i style="margin: 20px; padding: 20px ; font-size: 5em" class="fa fa-sitemap"></i>
+                    <span data-localize="none"></span>
+                </button>
+            </div>
+        </div>
+        <div id="appMailWaspContent" class="noScroll container" style="display: none"></div>
+        <div id="appEverNodesContent" class="noScroll container" style="display: none"></div>
+    </div>
+</div>
+<div *ngIf="m_showMode == m_ShowModeEnum.SAVE">
+    <loading [style]="{'margin-top': '150px'}"></loading>
+    <h5 style="text-align: center; margin-top: 20px" i18n>loading...</h5>
+</div>
+<div [@logoutState]="m_logoutState" *ngIf="m_showMode == m_ShowModeEnum.LOGOUT">
+    <h1 style="text-align: center; margin-top: 200px"><span i18n>have a nice day </span></h1>
+    <h1 style="text-align: center"><i class="fa fa-smile-o"></i></h1>
+</div>
+
+<live-preview *ngIf="m_showMode == m_ShowModeEnum.PREVIEW"></live-preview>
+
+<modal #modalProUpgrade>
+    <modal-header [show-close]="true">
+        <h4 i18n class="modal-title">Upgrade to Enterprise</h4>
+    </modal-header>
+    <modal-body>
+        <pro-upgrade></pro-upgrade>
+    </modal-body>
+    <modal-footer [show-default-buttons]="false"></modal-footer>
+</modal>
+
+<modal #modalLocale>
+    <modal-header [show-close]="true">
+        <h4 i18n class="modal-title">Pick your language</h4>
+    </modal-header>
+    <modal-body>
+        <locale-selector #localSelector (onLocaleChanged)="_onLocaleChanged($event)" [orientation]="'modal'"></locale-selector>
+    </modal-body>
+    <modal-footer [show-default-buttons]="false"></modal-footer>
+</modal>
+
+
