@@ -5,7 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "build": "ng build",
-    "start": "node start.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "@angular/animations": "^4.3.1",

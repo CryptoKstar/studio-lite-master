@@ -14,5 +14,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(globs.PORT_LISTEN_DIST, function () {
-    console.log('Now opening your browser to http://localhost:8080/msgetstarted.html'.yellow);
+    console.log('Now opening your browser to http://localhost:8080/msgetstarted.html');
 });
