@@ -39,7 +39,6 @@ testem.log
 
 
 # js/map
-*.js
 src/**/*.js
 *prod.js
 src/**/*.map
